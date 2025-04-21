@@ -43,6 +43,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Smiles Dental - Odontología Estética</title>
+    <link rel="icon" type="image/png" href="https://github.com/STE2025LLC/pruebas/blob/main/Logo_sinfondo.png?raw=true.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -55,9 +56,6 @@
             --white: #ffffff;
             --dark-blue: #005066;
             --light-blue: #4cc9e6;
-            --romantic-red: #e63946;
-            --romantic-pink: #f1c1d1;
-            --heart-pink: #ff6f91;
         }
         
         * {
@@ -84,99 +82,6 @@
         p, .about-text p, .service-content p, .dentist-info p, .testimonial-content p, .info-text p, .footer-col p {
             text-align: justify;
         }
-        
-        /* Romantic Overlay */
-        #romantic-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/o90fZAx.jpeg') no-repeat center center/cover;
-            background-color: rgba(230, 57, 70, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            z-index: 2000;
-            opacity: 1;
-            transition: opacity 1s ease;
-            padding-bottom: 40px;
-        }
-        
-        #romantic-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .romantic-button {
-            background-color: var(--romantic-red);
-            color: var(--white);
-            padding: 20px 40px;
-            border-radius: 50px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, background-color 0.3s;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .romantic-button:hover {
-            background-color: var(--romantic-pink);
-            transform: scale(1.05);
-        }
-        
-        .romantic-button i {
-            font-size: 1.5rem;
-        }
-        
-        /* Heart Animations */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--heart-pink);
-            transform: rotate(45deg);
-            animation: float 4s infinite ease-in-out;
-            opacity: 0.7;
-        }
-        
-        .heart::before,
-        .heart::after {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background-color: var(--heart-pink);
-            border-radius: 50%;
-            position: absolute;
-        }
-        
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
-        
-        .heart::after {
-            top: 0;
-            left: -10px;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
-            50% { transform: translateY(-20px) rotate(45deg); opacity: 0.3; }
-            100% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
-        }
-        
-        .heart:nth-child(1) { left: -50px; top: -30px; animation-delay: 0s; }
-        .heart:nth-child(2) { right: -50px; top: -30px; animation-delay: 1s; }
-        .heart:nth-child(3) { left: -70px; bottom: -30px; animation-delay: 2s; }
-        .heart:nth-child(4) { right: -70px; bottom: -30px; animation-delay: 3s; }
         
         /* Header */
         header {
@@ -562,35 +467,7 @@
             margin-bottom: 20px;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: var(--white);
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
         /* Testimonials */
-        .testimonials {
-            background-color: var(--white);
-        }
-        
         .testimonials {
             background-color: var(--white);
         }
@@ -691,17 +568,100 @@
         .contact {
             background: linear-gradient(rgba(0, 180, 216, 0.9), rgba(0, 180, 216, 0.9)), url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             color: var(--white);
+            padding: 80px 0;
         }
         
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
+            align-items: stretch;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 5px rgba(0, 180, 216, 0.3);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
         }
         
         .contact-info h3 {
@@ -709,6 +669,8 @@
             margin-bottom: 30px;
             position: relative;
             color: var(--white);
+            text-align: center;
+            font-family: 'Playfair Display', serif;
         }
         
         .contact-info h3::after {
@@ -718,7 +680,8 @@
             height: 3px;
             background: var(--accent);
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .info-item {
@@ -737,6 +700,7 @@
         .info-text h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
+            color: var(--white);
         }
         
         .info-text a {
@@ -749,86 +713,33 @@
             color: var(--accent);
         }
         
-        /* Ajuste para el formato de los horarios */
         .info-text .schedule-line {
             display: block;
         }
         
         .info-text .schedule-hours {
-            margin-left: 20px; /* Espaciado de unas 4 letras */
+            margin-left: 20px;
         }
         
         .info-text .schedule-hours-secondary {
-            margin-left: 15px; /* Espaciado de unas 3 letras */
+            margin-left: 15px;
         }
         
-        .contact-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        .contact-form h3 {
-            color: var(--secondary);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .contact-form h3::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 0;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary);
+        .social-links a {
             color: var(--white);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
+            font-size: 1.5rem;
+            transition: color 0.3s;
         }
         
-        .submit-btn:hover {
-            background-color: var(--secondary);
+        .social-links a:hover {
+            color: var(--accent);
         }
         
         /* Map Section */
@@ -857,7 +768,7 @@
         
         .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 50px;
         }
@@ -897,31 +808,6 @@
             color: var(--primary);
         }
         
-        .footer-contact li {
-            margin-bottom: 15px;
-            list-style: none;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .footer-contact i {
-            margin-right: 10px;
-            color: var(--primary);
-        }
-        
-        /* Ajuste para el formato de los horarios en el footer */
-        .footer-contact .schedule-line {
-            display: block;
-        }
-        
-        .footer-contact .schedule-hours {
-            margin-left: 20px; /* Espaciado de unas 4 letras */
-        }
-        
-        .footer-contact .schedule-hours-secondary {
-            margin-left: 15px; /* Espaciado de unas 3 letras */
-        }
-        
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
@@ -948,45 +834,18 @@
             .footer-bottom p span:last-child {
                 font-size: 0.9rem;
             }
-            .romantic-button {
-                font-size: 1.2rem;
-                padding: 15px 25px;
-                max-width: 90%;
-                flex-wrap: wrap;
-                justify-content: center;
+            .contact-container {
+                grid-template-columns: 1fr;
             }
-            .heart {
-                width: 15px;
-                height: 15px;
+            .contact-form, .contact-info {
+                padding: 30px;
             }
-            .heart::before,
-            .heart::after {
-                width: 15px;
-                height: 15px;
+            .contact-form h3, .contact-info h3 {
+                font-size: 1.6rem;
             }
-            .heart::before {
-                top: -7.5px;
-            }
-            .heart::after {
-                left: -7.5px;
-            }
-            .heart:nth-child(1) { left: -40px; top: -20px; }
-            .heart:nth-child(2) { right: -40px; top: -20px; }
-            .heart:nth-child(3) { left: -50px; bottom: -20px; }
-            .heart:nth-child(4) { right: -50px; bottom: -20px; }
-            #romantic-overlay {
-                padding-bottom: 20px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .romantic-button {
+            .submit-btn {
+                padding: 12px 25px;
                 font-size: 1rem;
-                padding: 12px 20px;
-                max-width: 80%;
-            }
-            #romantic-overlay {
-                padding-bottom: 15px;
             }
         }
         
@@ -1087,29 +946,13 @@
                 font-size: 2rem;
             }
             
-            /* Formulario de contacto */
-            .contact-form {
-                padding: 25px;
-            }
-            
-            .form-control {
-                padding: 14px 15px;
-                font-size: 16px;
-            }
-            
-            .submit-btn {
-                padding: 14px 20px;
-                font-size: 1rem;
-            }
-            
             /* Footer - Versión Móvil */
             .footer-container {
                 grid-template-columns: 1fr !important;
             }
             
             /* Ocultar estas secciones en móvil */
-            .footer-col:nth-child(2),
-            .footer-col:nth-child(3) {
+            .footer-col:nth-child(2) {
                 display: none !important;
             }
         }
@@ -1145,19 +988,6 @@
     </style>
 </head>
 <body>
-    <!-- Romantic Overlay -->
-    <div id="romantic-overlay">
-        <button class="romantic-button" onclick="hideOverlay()">
-            <i class="fas fa-heart"></i>
-            TE AMO CON TODO MI CORAZÓN, HOY Y SIEMPRE!
-            <i class="fas fa-heart"></i>
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-        </button>
-    </div>
-
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -1329,12 +1159,6 @@
                     <h3>Dra. Nohelia Reyes Cuéllar</h3>
                     <span class="specialist-title">Especialista en Odontología Estética</span>
                     <p>Con más de 10 años de experiencia en el campo de la odontología estética, la Dra. Reyes se ha especializado en brindar tratamientos personalizados que combinan salud bucal y belleza natural. Su enfoque humanizado y atención al detalle la han convertido en una de las profesionales más solicitadas en la región.</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="mailto:noheliareyes1990@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1401,9 +1225,6 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2 style="color: var(--secondary);">Contáctanos</h2>
-            </div>
             <div class="contact-container">
                 <div class="contact-form">
                     <h3>Agenda tu cita</h3>
@@ -1465,7 +1286,7 @@
                         </div>
                         <div class="info-text">
                             <h4>Email</h4>
-                            <p style="color: var(--white);">noheliareyes1990@gmail.com</p>
+                            <p><a href="mailto:noheliareyes1990@gmail.com">noheliareyes1990@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -1478,7 +1299,7 @@
                             <span class="schedule-line schedule-hours">9:00 - 12:30.</span>
                             <span class="schedule-line schedule-hours-secondary">14:30 - 19:00.</span>
                             <span class="schedule-line">Sábados:</span>
-                            <span class="schedule-line schedule-hours">9:00 a 12:30.</span>
+                            <span class="schedule-line schedule-hours">9:00 - 12:30.</span>
                         </div>
                     </div>
                     <div class="social-links">
@@ -1506,12 +1327,6 @@
                 <div class="footer-col">
                     <h4>All Smiles Dental</h4>
                     <p class="non-justified">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:noheliareyes1990@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Enlaces rápidos</h4>
@@ -1533,33 +1348,6 @@
                         <li><a href="#">Odontología General</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Contacto</h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Av. Beni entre 3er y 4º anillo, Calle Rochela #3000</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+591 72122662</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span style="color: var(--white);">noheliareyes1990@gmail.com</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>
-                                <span class="schedule-line">Lunes - Viernes:</span>
-                                <span class="schedule-line schedule-hours">9:00 - 12:30.</span>
-                                <span class="schedule-line schedule-hours-secondary">14:30 - 19:00.</span>
-                                <span class="schedule-line">Sábados:</span>
-                                <span class="schedule-line schedule-hours">9:00 - 12:30.</span>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
             </div>
             <div class="footer-bottom">
                 <p>
@@ -1570,16 +1358,8 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        // Romantic Overlay Hide Function
-        function hideOverlay() {
-            const overlay = document.getElementById('romantic-overlay');
-            overlay.classList.add('hidden');
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 1000);
-        }
-
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const nav = document.getElementById('nav');
@@ -1659,6 +1439,38 @@
             alert('Gracias por tu solicitud. Nos pondremos en contacto contigo pronto para confirmar tu cita.');
             this.reset();
         });
+    </script>
+    <script>
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+                try {
+                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                    var filteredData = jsonData.filter(row => row.some(filledCell));
+                    var headerRowIndex = filteredData.findIndex((row, index) =>
+                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    );
+                    if (headerRowIndex === -1 || headerRowIndex > 25) {
+                        headerRowIndex = 0;
+                    }
+                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                    return csv;
+                } catch (e) {
+                    console.error(e);
+                    return "";
+                }
+            }
+            return gk_fileData[filename] || "";
+        }
     </script>
 </body>
 </html>
