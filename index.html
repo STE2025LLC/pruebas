@@ -161,7 +161,7 @@
             <p class="subtitle">Tu socio tecnológico de confianza</p>
         </div>
 
-        <form id="contactForm" action="https://formsubmit.co/tu-email@ste.com" method="POST" enctype="multipart/form-data">
+        <form id="contactForm" action="https://formsubmit.co/ccb2h74zn4@illubd.com" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <i class="fas fa-user form-icon"></i>
                 <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -180,8 +180,8 @@
             <!-- Configuración FormSubmit -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="box">
-            <input type="hidden" name="_subject" value="Nuevo mensaje - STE LLC">
-            <input type="hidden" name="_autoresponse" value="Gracias por contactarnos. Tu referencia: STE-{{timestamp}}">
+            <input type="hidden" name="_subject" value="Nuevo mensaje - Sistemas de Trading Eficientes LLC">
+            <input type="hidden" name="_autoresponse" value="Gracias por contactarnos. Tu referencia: Sistemas de Trading Eficientes LLC-{{timestamp}}">
             <input type="hidden" name="_next" value="#confirmation">
 
             <button type="submit" class="submit-btn">
@@ -196,7 +196,7 @@
                 <path fill="none" stroke="#667eea" stroke-width="4" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
             </svg>
             <h2>¡Mensaje Recibido!</h2>
-            <div class="reference-code" id="refCode">STE-{{timestamp}}</div>
+            <div class="reference-code" id="refCode">Sistemas de Trading Eficientes LLC-{{timestamp}}</div>
             <p>Hemos enviado una confirmación a tu correo electrónico<br>con los detalles de tu solicitud.</p>
         </div>
     </div>
@@ -215,7 +215,7 @@
             
             // Actualizar respuesta automática
             this.querySelector('[name="_autoresponse"]').value = 
-                `Estimado cliente,\n\nHemos recibido su mensaje (Referencia: STE-${timestamp}).\nNuestro equipo se pondrá en contacto dentro de 24 horas.\n\nAtentamente,\nEquipo STE LLC`;
+                `Estimado cliente,\n\nHemos recibido su mensaje (Referencia: Sistemas de Trading Eficientes LLC-${timestamp}).\nNuestro equipo se pondrá en contacto dentro de 24 horas.\n\nAtentamente,\nEquipo STE LLC`;
 
             // Enviar formulario
             setTimeout(() => this.submit(), 1000);
