@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -73,7 +112,8 @@
         .logo img {
             height: 50px;
             margin-right: 10px;
-            filter: invert(20%) sepia(50%) saturate(2000%) hue-rotate(170deg) brightness(90%) contrast(90%);
+            filter: invert(20%) sepia(100%) saturate(1000%) hue-rotate(170deg) brightness(80%) contrast(90%); /* Ajusta el color al azul oscuro #005066 */
+            transform: translateY(-5px); /* Sube el logo para alinearlo con "All Smiles Dental" */
         }
         
         .logo-text h1 {
@@ -685,7 +725,7 @@
             position: relative;
             z-index: 1;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 30px;
+            border-radius: 10px;
             overflow: hidden;
         }
         
@@ -767,6 +807,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+        
+        /* Ajuste para móviles: Primer span en una línea, segundo span debajo */
+        @media (max-width: 768px) {
+            .footer-bottom p {
+                flex-direction: column; /* Mantener columna para apilar los spans */
+                align-items: center;
+            }
+            .footer-bottom p span:first-child {
+                font-size: 0.8rem; /* Reducir tamaño de fuente del primer span */
+                white-space: nowrap; /* Asegurar que no se divida en varias líneas */
+            }
+            .footer-bottom p span:last-child {
+                font-size: 0.9rem; /* Mantener tamaño legible para el segundo span */
+            }
         }
         
         /* Animations */
@@ -928,7 +983,7 @@
     <header id="header">
         <div class="container header-container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Logo%20azul%20(sin%20fondo).png" alt="All Smiles Dental Logo">
+                <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Logo_sinfondo.png" alt="All Smiles Dental Logo">
                 <div class="logo-text">
                     <h1>All Smiles Dental</h1>
                     <span>Odontología Estética</span>
@@ -1222,7 +1277,7 @@
                         </div>
                         <div class="info-text">
                             <h4>Teléfono</h4>
-                            <a href="tel:+59172122662">+591 72122662</a>
+                            <a href="tel:+591721222662">+591 721222662</a>
                         </div>
                     </div>
                     <div class="info-item">
@@ -1246,7 +1301,7 @@
                     </div>
                     <div class="social-links">
                         <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/591721222662" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="mailto:noheliareyescuellar@gmail.com"><i class="fas fa-envelope"></i></a>
                     </div>
