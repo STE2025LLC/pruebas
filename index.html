@@ -7,7 +7,96 @@
     <title>Contacto - STE LLC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos anteriores (sin cambios) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contact-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        textarea {
+            height: 150px;
+            padding-left: 20px;
+            resize: vertical;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin: 25px auto 0;
+        }
+
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .reference-number {
+            color: #27ae60;
+            font-family: monospace;
+            font-size: 1.4em;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
@@ -35,14 +124,14 @@
                 <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
             </div>
 
-            <!-- Configuración esencial corregida -->
+            <!-- Configuración clave corregida -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_subject" value="Nuevo mensaje web - STE LLC">
             <input type="hidden" name="_autoresponse" value="Estimado cliente,%0D%0A%0D%0ASu referencia: STE-{{timestamp}}%0D%0AEquipo de Sistemas de Trading Eficientes LLC">
             <input type="hidden" name="_replyto" value="{email}">
             <input type="hidden" name="_next" value="https://ste2025llc.github.io/pruebas/#confirmation">
-            <input type="hidden" name="_debug" value="true"> <!-- Para recibir logs -->
+            <input type="hidden" name="_debug" value="true"> <!-- Para recibir logs de error -->
 
             <button type="submit">Enviar Mensaje</button>
         </form>
@@ -75,7 +164,7 @@
                     headers: {'Accept': 'application/json'}
                 });
                 
-                if (!response.ok) throw new Error('Error en el servidor');
+                if (!response.ok) throw new Error();
                 
             } catch (error) {
                 alert('Error al enviar. Por favor, inténtalo de nuevo.');
