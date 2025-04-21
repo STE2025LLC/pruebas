@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer-when-downgrade">
-    <title>Contacto - Sistemas de Trading Eficientes LLC</title>
+    <title>Contacto - STE LLC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -15,7 +15,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f0f2f5, #c9d6ff);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,12 +26,10 @@
         .contact-container {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             padding: 40px;
             width: 100%;
             max-width: 600px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
         }
 
         h1 {
@@ -52,13 +50,14 @@
             top: 50%;
             transform: translateY(-50%);
             color: #667eea;
+            font-size: 1.2em;
         }
 
         input, textarea {
             width: 100%;
-            padding: 14px 20px 14px 45px;
+            padding: 14px 20px 14px 50px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
             transition: all 0.3s ease;
         }
@@ -70,18 +69,17 @@
         }
 
         button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #667eea;
             color: white;
             padding: 15px 40px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 25px auto 0;
             width: 100%;
             max-width: 200px;
+            display: block;
+            margin: 25px auto 0;
         }
 
         .confirmation {
@@ -95,21 +93,22 @@
 
         .reference-number {
             color: #27ae60;
+            font-family: monospace;
             font-size: 1.4em;
             margin: 15px 0;
-            font-family: monospace;
-            background: #f0f2f5;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
         }
     </style>
 </head>
 <body>
     <div class="contact-container">
-        <h1>Contacto STE LLC</h1>
+        <h1>Sistemas de Trading Eficientes LLC</h1>
         
-        <form id="contactForm" action="https://formsubmit.co/info@sistemasdetradingeficientes.com" method="POST" enctype="multipart/form-data">
+        <form id="contactForm" 
+              action="https://formsubmit.co/info@sistemasdetradingeficientes.com" 
+              method="POST"
+              enctype="multipart/form-data"
+              data-redirect="false">
+            
             <div class="form-group">
                 <i class="fas fa-user form-icon"></i>
                 <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -121,16 +120,17 @@
             </div>
 
             <div class="form-group">
-                <i class="fas fa-comment-dots form-icon"></i>
+                <i class="fas fa-comment form-icon"></i>
                 <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
             </div>
 
-            <!-- Configuración FormSubmit -->
+            <!-- Configuración esencial -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde STE LLC">
-            <input type="hidden" name="_autoresponse" id="autoResponse">
-            <input type="hidden" name="_next" value="#confirmation">
+            <input type="hidden" name="_subject" value="Nuevo mensaje web - STE LLC">
+            <input type="hidden" name="_autoresponse" value="Estimado cliente,%0D%0A%0D%0ASu referencia: STE-{{timestamp}}%0D%0AEquipo de Sistemas de Trading Eficientes LLC">
+            <input type="hidden" name="_replyto" value="{email}">
+            <input type="hidden" name="_next" value="https://ste2025llc.github.io/pruebas/#confirmation">
 
             <button type="submit">Enviar Mensaje</button>
         </form>
@@ -138,43 +138,29 @@
         <div class="confirmation" id="confirmation">
             <h2>✅ Mensaje Recibido</h2>
             <p class="reference-number" id="refNumber"></p>
-            <p>Hemos enviado una confirmación a tu correo electrónico con los detalles de tu solicitud.</p>
+            <p>Hemos enviado la confirmación con tu referencia a tu correo electrónico</p>
         </div>
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Generar referencia única
+            // Generar referencia
             const timestamp = Date.now();
             const refNumber = `STE-${timestamp}`;
             
-            // Actualizar elementos
+            // Actualizar pantalla
             document.getElementById('refNumber').textContent = refNumber;
             document.getElementById('confirmation').style.display = 'block';
             document.getElementById('contactForm').style.display = 'none';
 
-            // Configurar respuesta automática
-            document.getElementById('autoResponse').value = 
-                `Estimado cliente,\n\nSu mensaje (Referencia: ${refNumber}) ha sido recibido exitosamente.\n\nAtentamente,\nEquipo Sistemas de Trading Eficientes LLC`;
-
             // Enviar formulario
-            try {
-                const response = await fetch(e.target.action, {
-                    method: 'POST',
-                    body: new FormData(e.target),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (!response.ok) throw new Error();
-                
-            } catch (error) {
-                alert('Error al enviar el mensaje');
-                location.reload();
-            }
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {'Accept': 'application/json'}
+            });
         });
     </script>
 </body>
