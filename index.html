@@ -11,11 +11,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f0f2f5, #c9d6ff);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,24 +23,22 @@
             padding: 20px;
         }
 
-        .contact-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        .contact-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
             padding: 40px;
             width: 100%;
             max-width: 600px;
-        }
-
-        .brand-header {
-            text-align: center;
-            margin-bottom: 40px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
         }
 
         h1 {
             color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
             font-size: 2.2em;
-            margin-bottom: 10px;
         }
 
         .form-group {
@@ -54,14 +52,13 @@
             top: 50%;
             transform: translateY(-50%);
             color: #667eea;
-            font-size: 1.2em;
         }
 
         input, textarea {
             width: 100%;
-            padding: 14px 20px 14px 50px;
+            padding: 14px 20px 14px 45px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s ease;
         }
@@ -72,49 +69,47 @@
             resize: vertical;
         }
 
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 16px 45px;
+            padding: 15px 40px;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: block;
+            margin: 25px auto 0;
             width: 100%;
+            max-width: 200px;
         }
 
-        .confirmation-message {
+        .confirmation {
             display: none;
             text-align: center;
-            padding: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
-        .reference-code {
-            background: #f0f2f5;
-            padding: 12px 25px;
-            border-radius: 8px;
-            display: inline-block;
-            margin: 20px 0;
+        .reference-number {
+            color: #27ae60;
+            font-size: 1.4em;
+            margin: 15px 0;
             font-family: monospace;
-            font-size: 1.2em;
-            color: #2c3e50;
+            background: #f0f2f5;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <div class="contact-card">
-        <div class="brand-header">
-            <h1>Sistemas de Trading Eficientes LLC</h1>
-            <p>Trading Manual y Algorítmico</p>
-        </div>
-
-        <form id="contactForm" 
-              action="https://formsubmit.co/info@sistemasdetradingeficientes.com" 
-              method="POST"
-              enctype="multipart/form-data"
-              data-redirect="false">
-            
+    <div class="contact-container">
+        <h1>Contacto Sistemas de Trading Eficientes LLC</h1>
+        
+        <form id="contactForm" action="https://formsubmit.co/info@sistemasdetradingeficientes.com" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <i class="fas fa-user form-icon"></i>
                 <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -133,19 +128,17 @@
             <!-- Configuración FormSubmit -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="Nuevo mensaje - Sistemas de Trading Eficientes LLC">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde STE LLC">
             <input type="hidden" name="_autoresponse" id="autoResponse">
             <input type="hidden" name="_next" value="#confirmation">
 
-            <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane"></i> Enviar Mensaje
-            </button>
+            <button type="submit">Enviar Mensaje</button>
         </form>
 
-        <div class="confirmation-message" id="confirmation">
+        <div class="confirmation" id="confirmation">
             <h2>✅ Mensaje Recibido</h2>
-            <div class="reference-code" id="refCode"></div>
-            <p>Hemos enviado una confirmación a tu correo electrónico</p>
+            <p class="reference-number" id="refNumber"></p>
+            <p>Hemos enviado una confirmación a tu correo electrónico con los detalles de tu solicitud.</p>
         </div>
     </div>
 
@@ -155,16 +148,16 @@
             
             // Generar referencia única
             const timestamp = Date.now();
-            const refNumber = `Sistemas de Trading Eficientes LLC-${timestamp}`;
+            const refNumber = `STE-${timestamp}`;
             
-            // Actualizar elementos visuales
-            document.getElementById('refCode').textContent = refNumber;
-            document.getElementById('contactForm').style.display = 'none';
+            // Actualizar elementos
+            document.getElementById('refNumber').textContent = refNumber;
             document.getElementById('confirmation').style.display = 'block';
-            
+            document.getElementById('contactForm').style.display = 'none';
+
             // Configurar respuesta automática
             document.getElementById('autoResponse').value = 
-                `Estimado cliente,\n\nSu mensaje (Referencia: ${refNumber}) ha sido recibido.\n\nEquipo Sistemas de Trading Eficientes LLC`;
+                `Estimado cliente,\n\nSu mensaje (Referencia: ${refNumber}) ha sido recibido exitosamente.\n\nAtentamente,\nEquipo Sistemas de Trading Eficientes LLC`;
 
             // Enviar formulario
             try {
@@ -176,10 +169,10 @@
                     }
                 });
                 
-                if (!response.ok) throw new Error('Error en el envío');
+                if (!response.ok) throw new Error();
                 
             } catch (error) {
-                alert('Error al enviar el formulario');
+                alert('Error al enviar el mensaje');
                 location.reload();
             }
         });
