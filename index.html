@@ -104,14 +104,13 @@
         <h1>Sistemas de Trading Eficientes LLC</h1>
         
         <form id="contactForm" 
-              action="https://formsubmit.co/info@sistemasdetradingeficientes.com" 
+              action="https://getform.io/f/awnqzvpb" 
               method="POST"
-              enctype="multipart/form-data"
-              data-redirect="false">
+              enctype="multipart/form-data">
             
             <div class="form-group">
                 <i class="fas fa-user form-icon"></i>
-                <input type="text" name="nombre" placeholder="Nombre completo" required>
+                <input type="text" name="name" placeholder="Nombre completo" required>
             </div>
 
             <div class="form-group">
@@ -121,17 +120,11 @@
 
             <div class="form-group">
                 <i class="fas fa-comment form-icon"></i>
-                <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                <textarea name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
             </div>
 
-            <!-- Configuración clave corregida -->
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="Nuevo mensaje web - STE LLC">
-            <input type="hidden" name="_autoresponse" value="Estimado cliente,%0D%0A%0D%0ASu referencia: STE-{{timestamp}}%0D%0AEquipo de Sistemas de Trading Eficientes LLC">
-            <input type="hidden" name="_replyto" value="{email}">
-            <input type="hidden" name="_next" value="https://ste2025llc.github.io/pruebas/#confirmation">
-            <input type="hidden" name="_debug" value="true"> <!-- Para recibir logs de error -->
+            <!-- Campo oculto para referencia -->
+            <input type="hidden" name="referencia" id="hiddenReference">
 
             <button type="submit">Enviar Mensaje</button>
         </form>
@@ -139,7 +132,7 @@
         <div class="confirmation" id="confirmation">
             <h2>✅ Mensaje Recibido</h2>
             <p class="reference-number" id="refNumber"></p>
-            <p>Hemos enviado la confirmación con tu referencia a tu correo electrónico</p>
+            <p>Hemos procesado tu solicitud correctamente</p>
         </div>
     </div>
 
@@ -151,20 +144,27 @@
             const timestamp = Date.now();
             const refNumber = `STE-${timestamp}`;
             
-            // Actualizar pantalla
+            // Actualizar elementos visuales
             document.getElementById('refNumber').textContent = refNumber;
             document.getElementById('confirmation').style.display = 'block';
             document.getElementById('contactForm').style.display = 'none';
 
+            // Añadir referencia al campo oculto
+            document.getElementById('hiddenReference').value = refNumber;
+
+            // Enviar datos a Getform.io
+            const formData = new FormData(e.target);
+            
             try {
-                // Enviar formulario
                 const response = await fetch(e.target.action, {
                     method: 'POST',
-                    body: new FormData(e.target),
-                    headers: {'Accept': 'application/json'}
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
-                
-                if (!response.ok) throw new Error();
+
+                if (!response.ok) throw new Error('Error en el servidor');
                 
             } catch (error) {
                 alert('Error al enviar. Por favor, inténtalo de nuevo.');
