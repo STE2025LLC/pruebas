@@ -48,14 +48,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00b4d8;
-            --secondary: #0077b6;
-            --accent: #ff9e00;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --white: #ffffff;
-            --dark-blue: #005066;
-            --light-blue: #4cc9e6;
+            --primary: #4cc9e6; /* Celeste para textos destacados */
+            --secondary: #191919; /* Carbón para encabezado y textos sobre fondo claro */
+            --white: #fafbfd; /* Blanco para fondo y textos sobre fondo carbón */
         }
         
         * {
@@ -66,10 +61,10 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--dark);
+            color: var(--secondary);
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: var(--light);
+            background-color: var(--white);
         }
         
         .container {
@@ -83,9 +78,45 @@
             text-align: justify;
         }
         
+        /* Estilo global para todas las imágenes */
+        img {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Difuminado en los bordes de las imágenes */
+        img:not(.logo img, .footer-logo) {
+            mask-image: radial-gradient(circle, white 60%, transparent 95%);
+            -webkit-mask-image: radial-gradient(circle, white 60%, transparent 95%);
+        }
+        
+        /* Ajuste para imágenes con diseño circular */
+        .dentist-img img, .author-img img {
+            border-radius: 50%;
+            mask-image: radial-gradient(circle, white 60%, transparent 95%);
+            -webkit-mask-image: radial-gradient(circle, white 60%, transparent 95%);
+        }
+        
+        /* Excepción para logos */
+        .logo img, .footer-logo {
+            box-shadow: none;
+            mask-image: none;
+            -webkit-mask-image: none;
+        }
+        
+        /* Separador de onda */
+        .wave-divider {
+            height: 20px;
+            width: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C200,20 400,0 600,20 C800,0 1000,20 1200,0 L1200,20 L0,20 Z' fill='%234cc9e6' opacity='0.8'/%3E%3C/svg%3E") no-repeat center bottom / cover;
+            margin: 20px 0;
+        }
+        
         /* Header */
         header {
-            background-color: var(--white);
+            background-color: var(--secondary);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
@@ -94,7 +125,7 @@
         }
         
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: var(--secondary);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
@@ -120,14 +151,14 @@
         .logo-text h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            color: var(--dark-blue);
+            color: var(--primary);
             font-weight: 600;
             line-height: 1.2;
         }
         
         .logo-text span {
             font-size: 0.9rem;
-            color: var(--light-blue);
+            color: var(--white);
             display: block;
             letter-spacing: 1px;
         }
@@ -143,7 +174,7 @@
         
         nav ul li a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--primary);
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.3s;
@@ -159,7 +190,7 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: var(--secondary);
             bottom: -5px;
             left: 0;
             transition: width 0.3s;
@@ -174,7 +205,7 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--dark);
+            color: var(--white);
             cursor: pointer;
         }
         
@@ -199,30 +230,32 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             animation: fadeInDown 1s ease;
+            color: var(--primary);
         }
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             animation: fadeInUp 1s ease;
+            color: var(--white);
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--accent);
+            background-color: var(--primary);
             color: var(--white);
             padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
-            border: 2px solid var(--accent);
+            border: 2px solid var(--primary);
             animation: fadeIn 1.5s ease;
         }
         
         .btn:hover {
             background-color: transparent;
-            color: var(--accent);
+            color: var(--primary);
         }
         
         .btn-outline {
@@ -234,12 +267,12 @@
         
         .btn-outline:hover {
             background-color: var(--white);
-            color: var(--dark);
+            color: var(--secondary);
         }
         
         /* About Section */
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
         
         .section-title {
@@ -260,7 +293,7 @@
             position: absolute;
             width: 100%;
             height: 3px;
-            background: var(--primary);
+            background: var(--secondary);
             bottom: -10px;
             left: 0;
         }
@@ -275,7 +308,7 @@
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: none; /* Eliminado para evitar conflicto con img */
         }
         
         .about-img img {
@@ -330,6 +363,7 @@
         .feature-item h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
+            color: var(--primary);
         }
         
         .feature-item p.non-justified {
@@ -383,7 +417,7 @@
         .service-content h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
-            color: var(--secondary);
+            color: var(--primary);
             position: relative;
         }
         
@@ -392,7 +426,7 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: var(--primary);
+            background: var(--secondary);
             bottom: -5px;
             left: 0;
         }
@@ -438,7 +472,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 25px;
-            border: 5px solid var(--primary);
+            border: 5px solid var(--secondary);
         }
         
         .dentist-img img {
@@ -450,20 +484,21 @@
         .dentist-info h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--secondary);
+            color: var(--primary);
         }
         
         .dentist-info .specialist-title {
             font-size: 1.1rem;
-            color: var(--secondary);
+            color: var(--primary);
             margin-bottom: 20px;
             display: block;
             text-align: center;
+            font-style: italic;
         }
         
         .dentist-info p {
             font-size: 1.1rem;
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 20px;
         }
         
@@ -490,7 +525,7 @@
         }
         
         .testimonial-content {
-            background-color: var(--light);
+            background-color: var(--white);
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -505,7 +540,7 @@
             transform: translateX(-50%);
             border-width: 15px 15px 0;
             border-style: solid;
-            border-color: var(--light) transparent transparent;
+            border-color: var(--white) transparent transparent;
         }
         
         .testimonial-content p {
@@ -537,10 +572,11 @@
         .author-info h4 {
             font-size: 1.2rem;
             margin-bottom: 5px;
+            color: var(--primary);
         }
         
         .author-info p {
-            color: var(--primary);
+            color: var(--secondary);
             font-size: 0.9rem;
         }
         
@@ -555,7 +591,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: #ccc;
+            background-color: var(--secondary);
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -566,8 +602,8 @@
         
         /* Contact Section */
         .contact {
-            background: linear-gradient(rgba(0, 180, 216, 0.9), rgba(0, 180, 216, 0.9)), url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            color: var(--white);
+            background: var(--white);
+            color: var(--secondary);
             padding: 80px 0;
         }
         
@@ -599,7 +635,7 @@
             position: absolute;
             width: 50px;
             height: 3px;
-            background: var(--primary);
+            background: var(--secondary);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -613,13 +649,13 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--dark);
+            color: var(--secondary);
         }
         
         .form-control {
             width: 100%;
             padding: 14px 15px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--secondary);
             border-radius: 5px;
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
@@ -629,7 +665,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 5px rgba(0, 180, 216, 0.3);
+            box-shadow: 0 0 5px rgba(76, 201, 230, 0.3);
         }
         
         textarea.form-control {
@@ -659,7 +695,7 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--white);
             padding: 40px;
             border-radius: 10px;
         }
@@ -668,7 +704,7 @@
             font-size: 1.8rem;
             margin-bottom: 30px;
             position: relative;
-            color: var(--white);
+            color: var(--secondary);
             text-align: center;
             font-family: 'Playfair Display', serif;
         }
@@ -678,7 +714,7 @@
             position: absolute;
             width: 50px;
             height: 3px;
-            background: var(--accent);
+            background: var(--secondary);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -692,7 +728,7 @@
         
         .info-icon {
             font-size: 1.2rem;
-            color: var(--accent);
+            color: var(--primary);
             margin-right: 15px;
             margin-top: 5px;
         }
@@ -700,17 +736,17 @@
         .info-text h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--white);
+            color: var(--primary);
         }
         
         .info-text a {
-            color: var(--white);
+            color: var(--secondary);
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .info-text a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
         
         .info-text .schedule-line {
@@ -733,13 +769,13 @@
         }
         
         .social-links a {
-            color: var(--white);
+            color: var(--secondary);
             font-size: 1.5rem;
             transition: color 0.3s;
         }
         
         .social-links a:hover {
-            color: var(--accent);
+            color: var(--secondary);
         }
         
         /* Map Section */
@@ -761,7 +797,7 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--secondary);
             color: var(--white);
             padding: 70px 0 20px;
         }
@@ -777,6 +813,7 @@
             font-size: 1.2rem;
             margin-bottom: 25px;
             position: relative;
+            color: var(--primary);
         }
         
         .footer-col h4::after {
@@ -789,8 +826,29 @@
             left: 0;
         }
         
+        .footer-col:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            height: 130px;
+            max-width: 300px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+            margin: 0 auto;
+            filter: hue-rotate(0deg) saturate(100%) brightness(100%); /* Ajustado para #4cc9e6 */
+        }
+        
+        .footer-text {
+            text-align: center;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        
         .footer-col p.non-justified {
-            text-align: left;
+            text-align: center;
         }
         
         .footer-links li {
@@ -799,7 +857,7 @@
         }
         
         .footer-links a {
-            color: #bbb;
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -823,6 +881,26 @@
         
         /* Ajustes para móviles */
         @media (max-width: 768px) {
+            img {
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .wave-divider {
+                height: 15px;
+                margin: 15px 0;
+            }
+            .footer-logo {
+                height: 100px;
+                max-width: 250px;
+                margin-left: 15px;
+                margin: 0 auto;
+            }
+            .footer-text {
+                max-width: 280px;
+                text-align: center;
+            }
             .footer-bottom p {
                 flex-direction: column;
                 align-items: center;
@@ -937,15 +1015,6 @@
                 padding: 10px 20px;
             }
             
-            /* Secciones generales */
-            .section {
-                padding: 70px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
             /* Footer - Versión Móvil */
             .footer-container {
                 grid-template-columns: 1fr !important;
@@ -1026,6 +1095,7 @@
             </div>
         </div>
     </section>
+    <div class="wave-divider"></div>
 
     <!-- About Section -->
     <section class="section" id="about">
@@ -1035,7 +1105,7 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Sobre%20Nosotros.png" alt="Consultorio dental">
+                    <img src="https://github.com/STE2025LLC/pruebas/blob/main/Sobre%20Nosotros.png?raw=true" alt="Consultorio dental">
                 </div>
                 <div class="about-text">
                     <h3>Tu salud bucal es nuestra prioridad</h3>
@@ -1083,6 +1153,7 @@
             </div>
         </div>
     </section>
+    <div class="wave-divider"></div>
 
     <!-- Services Section -->
     <section class="section services" id="services">
@@ -1103,7 +1174,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Carillas.jpg" alt="Carillas dentales">
+                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Carillas.jpg?raw=true" alt="Carillas dentales">
                     </div>
                     <div class="service-content">
                         <h3>Carillas Dentales</h3>
@@ -1117,21 +1188,20 @@
                     </div>
                     <div class="service-content">
                         <h3>Diseño de Sonrisa</h3>
-                        <p>El diseño de sonrisa es un proceso en odontología estética que busca mejorar la apariencia y función de la sonrisa a través de la modificación del color, tamaño, forma y posición de los dientes.<p>
-                        <p>Con el 𝐃𝐈𝐒𝐄Ñ𝐎 𝐃𝐄 𝐒𝐎𝐍𝐑𝐈𝐒𝐀 luce la sonrisa que siempre deseaste tener y lo más importante 𝐒𝐈𝐍 𝐃𝐎𝐋𝐎𝐑 𝐘 𝐒𝐈𝐍 𝐃𝐄𝐒𝐆𝐀𝐒𝐓𝐄𝐒!!<p>
-                           <p>🦷Diseño ideal para cada paciente 
-                           <p>🦷Armoniza tu Sonrisa.<p>
-                           <p>🦷Mejora tamaño, forma y aspecto de los dientes.<p>
-                           <p>🦷 Devuelve estructura dental (desgastes dentales).<p>
-                           <p>🦷Corrige pequeñas mal posiciones dentales.<p>
-                           <p>🦷 Técnica conservadora (no se desgasta tus  dientes).<p>
-                           <p>🦷Te permite sonreír con seguridad.</p>
-                        
+                        <p>El diseño de sonrisa es un proceso en odontología estética que busca mejorar la apariencia y función de la sonrisa a través de la modificación del color, tamaño, forma y posición de los dientes.</p>
+                        <p>Con el 𝐃𝐈𝐒𝐄Ñ𝐎 𝐃𝐄 𝐒𝐎𝐍𝐑𝐈𝐒𝐀 luce la sonrisa que siempre deseaste tener y lo más importante 𝐒𝐈𝐍 𝐃𝐎𝐋𝐎𝐑 𝐘 𝐒𝐈𝐍 𝐃𝐄𝐒𝐆𝐀𝐒𝐓𝐄𝐒!!</p>
+                        <p>🦷Diseño ideal para cada paciente</p>
+                        <p>🦷Armoniza tu Sonrisa.</p>
+                        <p>🦷Mejora tamaño, forma y aspecto de los dientes.</p>
+                        <p>🦷Devuelve estructura dental (desgastes dentales).</p>
+                        <p>🦷Corrige pequeñas mal posiciones dentales.</p>
+                        <p>🦷Técnica conservadora (no se desgasta tus dientes).</p>
+                        <p>🦷Te permite sonreír con seguridad.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Endodoncia.png" alt="Endodoncia">
+                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Endodoncia.png?raw=true" alt="Endodoncia">
                     </div>
                     <div class="service-content">
                         <h3>Endodoncia</h3>
@@ -1141,7 +1211,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Odontolog%C3%ADa%20General.jpg" alt="Odontología general">
+                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Odontolog%C3%ADa%20General.jpg?raw=true" alt="Odontología general">
                     </div>
                     <div class="service-content">
                         <h3>Odontología General</h3>
@@ -1152,6 +1222,7 @@
             </div>
         </div>
     </section>
+    <div class="wave-divider"></div>
 
     <!-- Dentist Section -->
     <section class="section dentist" id="dentist">
@@ -1171,6 +1242,7 @@
             </div>
         </div>
     </section>
+    <div class="wave-divider"></div>
 
     <!-- Testimonials Section -->
     <section class="section testimonials">
@@ -1229,10 +1301,14 @@
             </div>
         </div>
     </section>
+    <div class="wave-divider"></div>
 
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
+            <div class="section-title">
+                <h2>Contáctenos</h2>
+            </div>
             <div class="contact-container">
                 <div class="contact-form">
                     <h3>Agenda tu cita</h3>
@@ -1333,8 +1409,8 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
-                    <h4>All Smiles Dental</h4>
-                    <p class="non-justified">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
+                    <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Logo%20pie%20de%20p%C3%A1gina%20(azul).png" alt="All Smiles Dental Logo" class="footer-logo">
+                    <p class="non-justified footer-text">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Enlaces rápidos</h4>
@@ -1360,7 +1436,7 @@
             <div class="footer-bottom">
                 <p>
                     <span>© 2024 All Smiles Dental. Todos los derechos reservados.</span>
-                    <span style="color: #00b4d8;">Dra. Nohelia Reyes Cuéllar.</span>
+                    <span style="color: var(--primary);">Dra. Nohelia Reyes Cuéllar.</span>
                 </p>
             </div>
         </div>
