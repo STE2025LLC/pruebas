@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer-when-downgrade">
-    <title>Contacto - STE LLC</title>
+    <title>Contacto - Sistemas de Trading Eficientes LLC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -30,12 +30,6 @@
             padding: 40px;
             width: 100%;
             max-width: 600px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
         }
 
         .brand-header {
@@ -43,20 +37,10 @@
             margin-bottom: 40px;
         }
 
-        .brand-header img {
-            width: 80px;
-            margin-bottom: 15px;
-        }
-
         h1 {
             color: #2c3e50;
             font-size: 2.2em;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1em;
+            margin-bottom: 10px;
         }
 
         .form-group {
@@ -82,12 +66,6 @@
             transition: all 0.3s ease;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
-        }
-
         textarea {
             height: 150px;
             padding-left: 20px;
@@ -103,27 +81,13 @@
             font-size: 1.1em;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 25px auto 0;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            width: 100%;
         }
 
         .confirmation-message {
             display: none;
             text-align: center;
             padding: 40px;
-        }
-
-        .checkmark {
-            width: 80px;
-            margin-bottom: 25px;
-            animation: scaleUp 0.5s ease;
         }
 
         .reference-code {
@@ -136,32 +100,21 @@
             font-size: 1.2em;
             color: #2c3e50;
         }
-
-        @keyframes scaleUp {
-            from { transform: scale(0); }
-            to { transform: scale(1); }
-        }
-
-        @media (max-width: 480px) {
-            .contact-card {
-                padding: 25px;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="contact-card">
         <div class="brand-header">
-            <!-- Agrega tu logo aquí -->
             <h1>STE LLC</h1>
-            <p class="subtitle">Tu socio tecnológico de confianza</p>
+            <p>Contacto profesional</p>
         </div>
 
-        <form id="contactForm" action="https://formsubmit.co/ccb2h74zn4@illubd.com" method="POST" enctype="multipart/form-data">
+        <form id="contactForm" 
+              action="https://formsubmit.co/ccb2h74zn4@illubd.com" 
+              method="POST"
+              enctype="multipart/form-data"
+              data-redirect="false">
+            
             <div class="form-group">
                 <i class="fas fa-user form-icon"></i>
                 <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -179,46 +132,56 @@
 
             <!-- Configuración FormSubmit -->
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_subject" value="Nuevo mensaje - Sistemas de Trading Eficientes LLC">
-            <input type="hidden" name="_autoresponse" value="Gracias por contactarnos. Tu referencia: Sistemas de Trading Eficientes LLC-{{timestamp}}">
+            <input type="hidden" name="_autoresponse" id="autoResponse">
             <input type="hidden" name="_next" value="#confirmation">
 
             <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane"></i>
-                Enviar Mensaje
+                <i class="fas fa-paper-plane"></i> Enviar Mensaje
             </button>
         </form>
 
         <div class="confirmation-message" id="confirmation">
-            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                <circle cx="26" cy="26" r="25" fill="none" stroke="#667eea" stroke-width="2"/>
-                <path fill="none" stroke="#667eea" stroke-width="4" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-            </svg>
-            <h2>¡Mensaje Recibido!</h2>
-            <div class="reference-code" id="refCode">Sistemas de Trading Eficientes LLC-{{timestamp}}</div>
-            <p>Hemos enviado una confirmación a tu correo electrónico<br>con los detalles de tu solicitud.</p>
+            <h2>✅ Mensaje Recibido</h2>
+            <div class="reference-code" id="refCode"></div>
+            <p>Hemos enviado una confirmación a tu correo electrónico</p>
         </div>
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Mostrar animación de confirmación
-            document.getElementById('contactForm').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
             
             // Generar referencia única
             const timestamp = Date.now();
-            document.getElementById('refCode').textContent = `STE-${timestamp}`;
+            const refNumber = `STE-${timestamp}`;
             
-            // Actualizar respuesta automática
-            this.querySelector('[name="_autoresponse"]').value = 
-                `Estimado cliente,\n\nHemos recibido su mensaje (Referencia: Sistemas de Trading Eficientes LLC-${timestamp}).\nNuestro equipo se pondrá en contacto dentro de 24 horas.\n\nAtentamente,\nEquipo STE LLC`;
+            // Actualizar elementos visuales
+            document.getElementById('refCode').textContent = refNumber;
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('confirmation').style.display = 'block';
+            
+            // Configurar respuesta automática
+            document.getElementById('autoResponse').value = 
+                `Estimado cliente,\n\nSu mensaje (Referencia: ${refNumber}) ha sido recibido.\n\nEquipo Sistemas de Trading Eficientes LLC`;
 
             // Enviar formulario
-            setTimeout(() => this.submit(), 1000);
+            try {
+                const response = await fetch(e.target.action, {
+                    method: 'POST',
+                    body: new FormData(e.target),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Error en el envío');
+                
+            } catch (error) {
+                alert('Error al enviar el formulario');
+                location.reload();
+            }
         });
     </script>
 </body>
