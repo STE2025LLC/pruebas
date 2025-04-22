@@ -6,7 +6,7 @@
     <title>All Smiles Dental - Odontología Estética</title>
     <link rel="icon" type="image/png" href="https://github.com/STE2025LLC/pruebas/blob/main/Logo_sinfondo.png?raw=true">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #00b4d8;
@@ -74,7 +74,7 @@
         .logo img {
             height: 50px;
             margin-right: 10px;
-            filter: invert(20%) sepia(100%) saturate(1000%) hue-rotate(170deg) brightness(80%) contrast(90%);
+            filter: brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(1743%) hue-rotate(170deg) brightness(87%) contrast(101%);
             transform: translateY(-5px);
         }
         
@@ -719,7 +719,7 @@
         
         .footer-container {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 40px;
             margin-bottom: 50px;
         }
@@ -738,6 +738,18 @@
             background: var(--primary);
             bottom: -10px;
             left: 0;
+        }
+        
+        .footer-col.logo-container {
+            max-width: none;
+            margin-right: 0;
+            justify-self: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 100px;
+            margin-bottom: 15px;
         }
         
         .footer-col p.non-justified {
@@ -772,32 +784,13 @@
             justify-content: center;
         }
         
-        /* Ajustes para móviles */
-        @media (max-width: 768px) {
-            .footer-bottom p {
-                flex-direction: column;
-                align-items: center;
-            }
-            .footer-bottom p span:first-child {
-                font-size: 0.8rem;
-                white-space: nowrap;
-            }
-            .footer-bottom p span:last-child {
-                font-size: 0.9rem;
-            }
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            .contact-form, .contact-info {
-                padding: 30px;
-            }
-            .contact-form h3, .contact-info h3 {
-                font-size: 1.6rem;
-            }
-            .submit-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
+        .footer-text {
+            color: #bbb;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 10px;
+            max-width: 3000px;
+            line-height: 1.4;
         }
         
         /* Animations */
@@ -840,11 +833,13 @@
             }
         }
         
-        /* Cambios SOLO para móvil (max-width: 768px) */
         @media (max-width: 768px) {
-            /* Header y menú */
             .header-container {
                 padding: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             nav {
@@ -871,10 +866,6 @@
                 margin: 15px 0;
             }
             
-            .mobile-menu-btn {
-                display: block;
-            }
-            
             /* Hero section */
             .hero h2 {
                 font-size: 2.5rem;
@@ -897,14 +888,19 @@
                 font-size: 2rem;
             }
             
-            /* Footer - Versión Móvil */
+            /* Footer */
             .footer-container {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr;
             }
             
-            /* Ocultar estas secciones en móvil */
-            .footer-col:nth-child(2) {
-                display: none !important;
+            .footer-col.logo-container {
+                grid-column: 1 / -1;
+                margin: 0 auto 40px;
+                max-width: 300px;
+            }
+            
+            .footer-col {
+                margin-bottom: 30px;
             }
         }
         
@@ -1008,7 +1004,7 @@
                             </div>
                             <div>
                                 <h4>Atención personalizada</h4>
-                                <p>Trato humano y planes de tratamiento individualizados.</p>
+                                <p class="non-justified">Trato humano y planes de tratamiento individualizados.</p>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -1091,7 +1087,6 @@
                     <div class="service-content">
                         <h3>Odontología General</h3>
                         <p>Atención integral: Revisiones periódicas, limpiezas profundas con ultrasonido, tratamientos de caries, coronas dentales, férulas de miorelajación, otros procedimientos para mantener tu salud bucal.</p>
-                        <a href="#" class="read-more">Saber más <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -1288,29 +1283,9 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col">
-                    <h4>All Smiles Dental</h4>
-                    <p class="non-justified">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Enlaces rápidos</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Inicio</a></li>
-                        <li><a href="#about">Sobre nosotros</a></li>
-                        <li><a href="#services">Servicios</a></li>
-                        <li><a href="#dentist">Dra. Reyes</a></li>
-                        <li><a href="#contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Nuestros servicios</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Blanqueamiento Dental</a></li>
-                        <li><a href="#">Carillas Dentales</a></li>
-                        <li><a href="#">Diseño Digital de Sonrisa</a></li>
-                        <li><a href="#">Endodoncia</a></li>
-                        <li><a href="#">Odontología General</a></li>
-                    </ul>
+                <div class="footer-col logo-container">
+                    <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Logo%20pie%20de%20p%C3%A1gina.png" alt="All Smiles Dental Logo" class="footer-logo">
+                    <p class="footer-text">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
                 </div>
             </div>
             <div class="footer-bottom">
