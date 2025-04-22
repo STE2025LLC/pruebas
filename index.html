@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -45,12 +46,17 @@
     <title>All Smiles Dental - Odontología Estética</title>
     <link rel="icon" type="image/png" href="https://github.com/STE2025LLC/pruebas/blob/main/Logo_sinfondo.png?raw=true.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4cc9e6; /* Celeste para textos destacados */
-            --secondary: #191919; /* Carbón para encabezado y textos sobre fondo claro */
-            --white: #fafbfd; /* Blanco para fondo y textos sobre fondo carbón */
+            --primary: #00b4d8;
+            --secondary: #0077b6;
+            --accent: #ff9e00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --white: #ffffff;
+            --dark-blue: #005066;
+            --light-blue: #4cc9e6;
         }
         
         * {
@@ -61,10 +67,10 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--secondary);
+            color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: var(--white);
+            background-color: var(--light);
         }
         
         .container {
@@ -78,45 +84,9 @@
             text-align: justify;
         }
         
-        /* Estilo global para todas las imágenes */
-        img {
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Difuminado en los bordes de las imágenes */
-        img:not(.logo img, .footer-logo) {
-            mask-image: radial-gradient(circle, white 60%, transparent 95%);
-            -webkit-mask-image: radial-gradient(circle, white 60%, transparent 95%);
-        }
-        
-        /* Ajuste para imágenes con diseño circular */
-        .dentist-img img, .author-img img {
-            border-radius: 50%;
-            mask-image: radial-gradient(circle, white 60%, transparent 95%);
-            -webkit-mask-image: radial-gradient(circle, white 60%, transparent 95%);
-        }
-        
-        /* Excepción para logos */
-        .logo img, .footer-logo {
-            box-shadow: none;
-            mask-image: none;
-            -webkit-mask-image: none;
-        }
-        
-        /* Separador de onda */
-        .wave-divider {
-            height: 20px;
-            width: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C200,20 400,0 600,20 C800,0 1000,20 1200,0 L1200,20 L0,20 Z' fill='%234cc9e6' opacity='0.8'/%3E%3C/svg%3E") no-repeat center bottom / cover;
-            margin: 20px 0;
-        }
-        
         /* Header */
         header {
-            background-color: var(--secondary);
+            background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
@@ -125,7 +95,7 @@
         }
         
         header.scrolled {
-            background-color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
@@ -151,14 +121,14 @@
         .logo-text h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            color: var(--primary);
+            color: var(--dark-blue);
             font-weight: 600;
             line-height: 1.2;
         }
         
         .logo-text span {
             font-size: 0.9rem;
-            color: var(--white);
+            color: var(--light-blue);
             display: block;
             letter-spacing: 1px;
         }
@@ -174,7 +144,7 @@
         
         nav ul li a {
             text-decoration: none;
-            color: var(--primary);
+            color: var(--dark);
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.3s;
@@ -190,7 +160,7 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--secondary);
+            background: var(--primary);
             bottom: -5px;
             left: 0;
             transition: width 0.3s;
@@ -205,16 +175,14 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--white);
+            color: var(--dark);
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        linear-gradient(to bottom, transparent 70%, #fafbfd 100%),
-                        url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
             text-align: center;
@@ -232,32 +200,30 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             animation: fadeInDown 1s ease;
-            color: var(--primary);
         }
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             animation: fadeInUp 1s ease;
-            color: var(--white);
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: var(--white);
             padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
-            border: 2px solid var(--primary);
+            border: 2px solid var(--accent);
             animation: fadeIn 1.5s ease;
         }
         
         .btn:hover {
             background-color: transparent;
-            color: var(--primary);
+            color: var(--accent);
         }
         
         .btn-outline {
@@ -269,12 +235,12 @@
         
         .btn-outline:hover {
             background-color: var(--white);
-            color: var(--secondary);
+            color: var(--dark);
         }
         
         /* About Section */
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
         
         .section-title {
@@ -295,7 +261,7 @@
             position: absolute;
             width: 100%;
             height: 3px;
-            background: var(--secondary);
+            background: var(--primary);
             bottom: -10px;
             left: 0;
         }
@@ -310,7 +276,7 @@
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: none; /* Eliminado para evitar conflicto con img */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         .about-img img {
@@ -365,7 +331,6 @@
         .feature-item h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--primary);
         }
         
         .feature-item p.non-justified {
@@ -419,7 +384,7 @@
         .service-content h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
-            color: var(--primary);
+            color: var(--secondary);
             position: relative;
         }
         
@@ -428,7 +393,7 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: var(--secondary);
+            background: var(--primary);
             bottom: -5px;
             left: 0;
         }
@@ -474,7 +439,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 25px;
-            border: 5px solid var(--secondary);
+            border: 5px solid var(--primary);
         }
         
         .dentist-img img {
@@ -486,21 +451,20 @@
         .dentist-info h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--primary);
+            color: var(--secondary);
         }
         
         .dentist-info .specialist-title {
             font-size: 1.1rem;
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 20px;
             display: block;
             text-align: center;
-            font-style: italic;
         }
         
         .dentist-info p {
             font-size: 1.1rem;
-            color: var(--secondary);
+            color: var(--primary);
             margin-bottom: 20px;
         }
         
@@ -527,7 +491,7 @@
         }
         
         .testimonial-content {
-            background-color: var(--white);
+            background-color: var(--light);
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -542,7 +506,7 @@
             transform: translateX(-50%);
             border-width: 15px 15px 0;
             border-style: solid;
-            border-color: var(--white) transparent transparent;
+            border-color: var(--light) transparent transparent;
         }
         
         .testimonial-content p {
@@ -574,11 +538,10 @@
         .author-info h4 {
             font-size: 1.2rem;
             margin-bottom: 5px;
-            color: var(--primary);
         }
         
         .author-info p {
-            color: var(--secondary);
+            color: var(--primary);
             font-size: 0.9rem;
         }
         
@@ -593,7 +556,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: var(--secondary);
+            background-color: #ccc;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -604,8 +567,8 @@
         
         /* Contact Section */
         .contact {
-            background: var(--white);
-            color: var(--secondary);
+            background: linear-gradient(rgba(0, 180, 216, 0.9), rgba(0, 180, 216, 0.9)), url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: var(--white);
             padding: 80px 0;
         }
         
@@ -637,7 +600,7 @@
             position: absolute;
             width: 50px;
             height: 3px;
-            background: var(--secondary);
+            background: var(--primary);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -651,13 +614,13 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--secondary);
+            color: var(--dark);
         }
         
         .form-control {
             width: 100%;
             padding: 14px 15px;
-            border: 1px solid var(--secondary);
+            border: 1px solid #ddd;
             border-radius: 5px;
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
@@ -667,7 +630,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 5px rgba(76, 201, 230, 0.3);
+            box-shadow: 0 0 5px rgba(0, 180, 216, 0.3);
         }
         
         textarea.form-control {
@@ -697,7 +660,7 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            background-color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 10px;
         }
@@ -706,7 +669,7 @@
             font-size: 1.8rem;
             margin-bottom: 30px;
             position: relative;
-            color: var(--secondary);
+            color: var(--white);
             text-align: center;
             font-family: 'Playfair Display', serif;
         }
@@ -716,7 +679,7 @@
             position: absolute;
             width: 50px;
             height: 3px;
-            background: var(--secondary);
+            background: var(--accent);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -730,7 +693,7 @@
         
         .info-icon {
             font-size: 1.2rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-right: 15px;
             margin-top: 5px;
         }
@@ -738,17 +701,17 @@
         .info-text h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--primary);
+            color: var(--white);
         }
         
         .info-text a {
-            color: var(--secondary);
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .info-text a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
         
         .info-text .schedule-line {
@@ -767,17 +730,17 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-top: 20px;
         }
         
         .social-links a {
-            color: var(--secondary);
+            color: var(--white);
             font-size: 1.5rem;
             transition: color 0.3s;
         }
         
         .social-links a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
         
         /* Map Section */
@@ -799,7 +762,7 @@
         
         /* Footer */
         footer {
-            background-color: var(--secondary);
+            background-color: var(--dark);
             color: var(--white);
             padding: 70px 0 20px;
         }
@@ -815,7 +778,6 @@
             font-size: 1.2rem;
             margin-bottom: 25px;
             position: relative;
-            color: var(--primary);
         }
         
         .footer-col h4::after {
@@ -828,29 +790,8 @@
             left: 0;
         }
         
-        .footer-col:first-child {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .footer-logo {
-            height: 130px;
-            max-width: 300px;
-            margin-bottom: 10px;
-            margin-left: 30px;
-            margin: 0 auto;
-            filter: hue-rotate(0deg) saturate(100%) brightness(100%); /* Ajustado para #4cc9e6 */
-        }
-        
-        .footer-text {
-            text-align: center;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        
         .footer-col p.non-justified {
-            text-align: center;
+            text-align: left;
         }
         
         .footer-links li {
@@ -859,7 +800,7 @@
         }
         
         .footer-links a {
-            color: var(--white);
+            color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -883,29 +824,6 @@
         
         /* Ajustes para móviles */
         @media (max-width: 768px) {
-            img {
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-            .section {
-                padding: 50px 0;
-            }
-            .wave-divider {
-                height: 15px;
-                margin: 15px 0;
-            }
-            .social-links {
-                margin-bottom: 20px;
-            }
-            .footer-logo {
-                height: 100px;
-                max-width: 250px;
-                margin-left: 15px;
-                margin: 0 auto;
-            }
-            .footer-text {
-                max-width: 280px;
-                text-align: center;
-            }
             .footer-bottom p {
                 flex-direction: column;
                 align-items: center;
@@ -1020,6 +938,15 @@
                 padding: 10px 20px;
             }
             
+            /* Secciones generales */
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
             /* Footer - Versión Móvil */
             .footer-container {
                 grid-template-columns: 1fr !important;
@@ -1109,7 +1036,7 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://github.com/STE2025LLC/pruebas/blob/main/Sobre%20Nosotros.png?raw=true" alt="Consultorio dental">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Consultorio dental">
                 </div>
                 <div class="about-text">
                     <h3>Tu salud bucal es nuestra prioridad</h3>
@@ -1157,7 +1084,6 @@
             </div>
         </div>
     </section>
-    <div class="wave-divider"></div>
 
     <!-- Services Section -->
     <section class="section services" id="services">
@@ -1168,7 +1094,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Blanqueamiento%20dental.jpg" alt="Blanqueamiento dental">
+                        <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Blanqueamiento dental">
                     </div>
                     <div class="service-content">
                         <h3>Blanqueamiento Dental</h3>
@@ -1178,7 +1104,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Carillas.jpg?raw=true" alt="Carillas dentales">
+                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Carillas.jpg" alt="Carillas dentales">
                     </div>
                     <div class="service-content">
                         <h3>Carillas Dentales</h3>
@@ -1192,20 +1118,21 @@
                     </div>
                     <div class="service-content">
                         <h3>Diseño de Sonrisa</h3>
-                        <p>El diseño de sonrisa es un proceso en odontología estética que busca mejorar la apariencia y función de la sonrisa a través de la modificación del color, tamaño, forma y posición de los dientes.</p>
-                        <p>Con el 𝐃𝐈𝐒𝐄Ñ𝐎 𝐃𝐄 𝐒𝐎𝐍𝐑𝐈𝐒𝐀 luce la sonrisa que siempre deseaste tener y lo más importante 𝐒𝐈𝐍 𝐃𝐎𝐋𝐎𝐑 𝐘 𝐒𝐈𝐍 𝐃𝐄𝐒𝐆𝐀𝐒𝐓𝐄𝐒!!</p>
-                        <p>🦷Diseño ideal para cada paciente</p>
-                        <p>🦷Armoniza tu Sonrisa.</p>
-                        <p>🦷Mejora tamaño, forma y aspecto de los dientes.</p>
-                        <p>🦷Devuelve estructura dental (desgastes dentales).</p>
-                        <p>🦷Corrige pequeñas mal posiciones dentales.</p>
-                        <p>🦷Técnica conservadora (no se desgasta tus dientes).</p>
-                        <p>🦷Te permite sonreír con seguridad.</p>
+                        <p>El diseño de sonrisa es un proceso en odontología estética que busca mejorar la apariencia y función de la sonrisa a través de la modificación del color, tamaño, forma y posición de los dientes.<p>
+                        <p>Con el 𝐃𝐈𝐒𝐄Ñ𝐎 𝐃𝐄 𝐒𝐎𝐍𝐑𝐈𝐒𝐀 luce la sonrisa que siempre deseaste tener y lo más importante 𝐒𝐈𝐍 𝐃𝐎𝐋𝐎𝐑 𝐘 𝐒𝐈𝐍 𝐃𝐄𝐒𝐆𝐀𝐒𝐓𝐄𝐒!!<p>
+                           <p>🦷Diseño ideal para cada paciente 
+                           <p>🦷Armoniza tu Sonrisa.<p>
+                           <p>🦷Mejora tamaño, forma y aspecto de los dientes.<p>
+                           <p>🦷 Devuelve estructura dental (desgastes dentales).<p>
+                           <p>🦷Corrige pequeñas mal posiciones dentales.<p>
+                           <p>🦷 Técnica conservadora (no se desgasta tus  dientes).<p>
+                           <p>🦷Te permite sonreír con seguridad.</p>
+                        
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Endodoncia.png?raw=true" alt="Endodoncia">
+                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Endodoncia.png" alt="Endodoncia">
                     </div>
                     <div class="service-content">
                         <h3>Endodoncia</h3>
@@ -1215,7 +1142,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Odontolog%C3%ADa%20General.jpg?raw=true" alt="Odontología general">
+                        <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Odontolog%C3%ADa%20General.jpg" alt="Odontología general">
                     </div>
                     <div class="service-content">
                         <h3>Odontología General</h3>
@@ -1226,7 +1153,6 @@
             </div>
         </div>
     </section>
-    <div class="wave-divider"></div>
 
     <!-- Dentist Section -->
     <section class="section dentist" id="dentist">
@@ -1246,7 +1172,6 @@
             </div>
         </div>
     </section>
-    <div class="wave-divider"></div>
 
     <!-- Testimonials Section -->
     <section class="section testimonials">
@@ -1305,14 +1230,10 @@
             </div>
         </div>
     </section>
-    <div class="wave-divider"></div>
 
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Contáctenos</h2>
-            </div>
             <div class="contact-container">
                 <div class="contact-form">
                     <h3>Agenda tu cita</h3>
@@ -1350,12 +1271,6 @@
                 </div>
                 <div class="contact-info">
                     <h3>Información de contacto</h3>
-                    <div class="social-links">
-                        <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="mailto:noheliareyes1990@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
                     <div class="info-item">
                         <div class="info-icon">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1396,6 +1311,12 @@
                             <span class="schedule-line schedule-hours">9:00 - 12:30.</span>
                         </div>
                     </div>
+                    <div class="social-links">
+                        <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:noheliareyes1990@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1413,8 +1334,8 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
-                    <img src="https://raw.githubusercontent.com/STE2025LLC/pruebas/refs/heads/main/Logo%20pie%20de%20p%C3%A1gina%20(azul).png" alt="All Smiles Dental Logo" class="footer-logo">
-                    <p class="non-justified footer-text">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
+                    <h4>All Smiles Dental</h4>
+                    <p class="non-justified">Especialistas en odontología estética, comprometidos con brindarte la mejor experiencia dental y resultados excepcionales.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Enlaces rápidos</h4>
@@ -1440,7 +1361,7 @@
             <div class="footer-bottom">
                 <p>
                     <span>© 2024 All Smiles Dental. Todos los derechos reservados.</span>
-                    <span style="color: var(--primary);">Dra. Nohelia Reyes Cuéllar.</span>
+                    <span style="color: #00b4d8;">Dra. Nohelia Reyes Cuéllar.</span>
                 </p>
             </div>
         </div>
@@ -1560,6 +1481,6 @@
             return gk_fileData[filename] || "";
         }
     </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93400cd3093d5a3a',t:'MTc0NTI3MTczNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
+
