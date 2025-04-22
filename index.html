@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -38,7 +37,48 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><!DOCTYPE html>
+        </script>```html
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+</script>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -46,7 +86,7 @@
     <title>All Smiles Dental - Odontología Estética</title>
     <link rel="icon" type="image/png" href="https://github.com/STE2025LLC/pruebas/blob/main/Logo_sinfondo.png?raw=true.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=stylesheet">
     <style>
         :root {
             --primary: #00b4d8;
@@ -386,16 +426,6 @@
             margin-bottom: 15px;
             color: var(--secondary);
             position: relative;
-        }
-        
-        .service-content h3::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
-            left: 0;
         }
         
         .service-content p {
@@ -1100,12 +1130,12 @@
                         <h3>Blanqueamiento Dental</h3>
                         <p>Uno de nuestros tratamientos más solicitados es el blanqueamiento dental, se trata de un tratamiento no invasivo que mejora la apariencia de los dientes, aclarándolos y dejándolos más blancos. 
                            El blanqueamiento dental es un procedimiento odontológico completamente seguro y eficaz, siempre que se realice bajo la supervisión de un odontólogo.
-                           En All Smiles Dental utilizamos los mejores procedimientos para obtener resultados increíbles donde podrás disfrutar en muy poco de una sonrisa más blanca y dando una imagen más saludable.</p>
+                           En All Smiles Dental utilizamos los mejores procedimientos para obtener resultados increíbles donde podrás disfrutar en muy poco de una sonrisa más blanca y dando una imagen más saludable.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Carillas_2.jpg?raw=true">
+                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Carillas_2.jpg?raw=true" alt="Carillas dentales">
                     </div>
                     <div class="service-content">
                         <h3>Carillas Dentales</h3>
@@ -1119,8 +1149,7 @@
                     <div class="service-content">
                         <h3>Diseño de Sonrisa</h3>
                         <p>El diseño de sonrisa es un proceso en odontología estética que busca mejorar la apariencia y función de la sonrisa a través de la modificación del color, tamaño, forma y posición de los dientes, es decir nos ayuda a restaurar la forma original del diente, en especial en casos con leves fracturas dentales, facetas de desgaste y alteraciones en la forma conservando el aspecto natural de los dientes y armonizando la sonrisa. 
-                           Con eI 𝐃𝐈𝐒𝐄Ñ𝐎 𝐃𝐄 𝐒𝐎𝐍𝐑𝐈𝐒𝐀 luce la sonrisa que siempre deseaste tener y lo más importante 𝐒𝐈𝐍 𝐃𝐎𝐋𝐎𝐑 𝐘 𝐒𝐈𝐍 𝐃𝐄𝐒𝐆𝐀𝐒𝐓𝐄𝐒!
-                        
+                           Con eI 𝐃𝐈𝐒𝐄Ñ𝐎 𝐃𝐄 𝐒𝐎𝐍𝐑𝐈𝐒𝐀 luce la sonrisa que siempre deseaste tener y lo más importante 𝐒𝐈𝐍 𝐃𝐎𝐋𝐎𝐑 𝐘 𝐒𝐈𝐍 𝐃𝐄𝐒𝐆𝐀𝐒𝐓𝐄𝐒!</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -1131,22 +1160,9 @@
                         <h3>Endodoncia</h3>
                         <p>TRATAMIENTO DE CONDUCTO🦷👩‍⚕
                           ✅Solución definitiva para el dolor de dientes ‼
-                               La ENDODONCIA o también llamado TRATAMIENTO DE CONDUCTO es un procedimiento dental para salvar un diente al remover tejido nervioso muerto o que presente alguna inflamación a causa de una infección bacteriana, como podría ser la caries.
-                               Este tratamiento elimina el dolor y la infección, permitiéndote recuperar la salud y funcionalidad de tu sonrisa sin necesidad de extraer la pieza dental.</p>
+                          La ENDODONCIA o también llamado TRATAMIENTO DE CONDUCTO es un procedimiento dental para salvar un diente al remover tejido nervioso muerto o que presente alguna inflamación a causa de una infección bacteriana, como podría ser la caries.
+                          Este tratamiento elimina el dolor y la infección, permitiéndote recuperar la salud y funcionalidad de tu sonrisa sin necesidad de extraer la pieza dental.</p>
                     </div>
-
-                    <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Ni%C3%B1os.jpg?raw=true">
-                    </div>
-                    <div class="service-content">
-                        <h3>Niños</h3>
-                        <p>La salud bucal infantil es clave para un desarrollo sano.
-                           En All Smiles Dental cuidamos la salud bucal de tus niños: limpieza dental, fluorización,  sellantes, restauraciones con resina, exodoncias, pulpectomía, entre otros.
-                           ¡Una sonrisa sana comienza desde la infancia!
-                        
-                    </div>
-                
                 </div>
                 <div class="service-card">
                     <div class="service-img">
@@ -1154,8 +1170,19 @@
                     </div>
                     <div class="service-content">
                         <h3>Odontología General</h3>
-                        <p>Atención integral: Revisiones periódicas, limpiezas profundas con ultrasonido, tratamientos de caries, coronas dentales, férulas de miorelajación, otros procedimientos para mantener tu salud bucal.</p>
+                        <p>Atención integral: Revisiones periódicas, limpiezas profundas con ultrasonido, tratamientos de caries, coronas dentales, férulas de miorelajación, otros procedimientos para mantener tu salud bucal.</p>
                         <a href="#" class="read-more">Saber más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://github.com/STE2025LLC/pruebas/blob/main/Ni%C3%B1os.jpg?raw=true" alt="Niños">
+                    </div>
+                    <div class="service-content">
+                        <h3>Niños</h3>
+                        <p>La salud bucal infantil es clave para un desarrollo sano.
+                           En All Smiles Dental cuidamos la salud bucal de tus niños: limpieza dental, fluorización, sellantes, restauraciones con resina, exodoncias, pulpectomía, entre otros.
+                           ¡Una sonrisa sana comienza desde la infancia!</p>
                     </div>
                 </div>
             </div>
@@ -1303,7 +1330,7 @@
                         </div>
                         <div class="info-text">
                             <h4>Email</h4>
-                            <p><a href="mailto:noheliareyes1990@gmail.com">noheliareyes1990@gmail.com</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection#b7d9d8dfd2dbdcd4c7d0ccd0c68a82828bf7d0dad6dedb99d4d8da"><span class="__cf_email__" data-cfemail="e88c8d8a878e8b8390879b8791ddd5d5dca88f85898184c6898587">[email&#160;protected]</span></a></p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -1323,7 +1350,7 @@
                         <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="mailto:noheliareyes1990@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="/cdn-cgi/l/email-protection#e88c8d8a878e8b8390879b8791ddd5d5dca88f85898184c6898587"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -1489,6 +1516,7 @@
             return gk_fileData[filename] || "";
         }
     </script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9345f6ebce66bce0',t:'MTc0NTMzMzc1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
-
+```
