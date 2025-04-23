@@ -251,7 +251,7 @@
         }
         
         .about-text h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* Cambiado de 1.5rem a 1.8rem */
             margin-bottom: 20px;
             color: var(--secondary);
             text-align: center;
@@ -304,11 +304,14 @@
         .services-description {
             text-align: center;
             margin-bottom: 40px;
-            font-size: 1.1rem;
             color: var(--dark);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .services-grid {
@@ -419,7 +422,7 @@
         }
         
         .dentist-info h3 {
-            font-size: 1.8rem;
+            font-size: 1.4rem; /* Reducido de 1.8rem a 1.4rem */
             margin-bottom: 10px;
             color: var(--secondary);
         }
@@ -434,7 +437,7 @@
         
         .dentist-info p {
             font-size: 1.1rem;
-            color: var(--primary);
+            color: var(--dark); /* Cambiado de var(--primary) a var(--dark) */
             margin-bottom: 20px;
         }
         
@@ -795,17 +798,22 @@
         }
         
         .footer-bottom p {
-            font-size: 0.8rem; /* Tamaño reducido para móviles */
+            font-size: 0.9rem;
             display: flex;
-            flex-wrap: wrap; /* Permite que los elementos se ajusten */
-            justify-content: center;
+            flex-direction: column;
             gap: 5px;
+            text-align: center; /* Asegurar centrado */
+        }
+        
+        .footer-bottom p span {
+            display: block;
+            text-align: center; /* Asegurar centrado */
         }
         
         .footer-text {
             color: #bbb;
             font-size: 0.9rem;
-            text-align: center;
+            text-align: center !important; /* Cambiado a centrado */
             margin-top: 10px;
             max-width: 3000px;
             line-height: 1.4;
@@ -904,6 +912,12 @@
                 font-size: 2rem;
             }
             
+            .services-description {
+                text-align: justify;
+                padding: 0 10px;
+                white-space: normal;
+            }
+            
             .footer-container {
                 grid-template-columns: 1fr;
             }
@@ -918,12 +932,10 @@
                 margin-bottom: 30px;
             }
             
-            /* Ajuste específico para el texto del footer en móviles */
             .footer-bottom p {
                 font-size: 0.7rem;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: center;
+                flex-direction: column;
+                gap: 3px;
             }
         }
         
@@ -953,11 +965,6 @@
             .dentist-img {
                 width: 180px;
                 height: 180px;
-            }
-            
-            /* Ajuste adicional para móviles muy pequeños */
-            .footer-bottom p {
-                font-size: 0.65rem;
             }
         }
     </style>
@@ -1268,7 +1275,7 @@
                         </div>
                         <div class="info-text">
                             <h4>Email</h4>
-                            <p><a href="mailto:info@allsmilesdental.com">info@allsmilesdental.com</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection#cfa6a1a9a08faea3a3bca2a6a3aabcabaaa1bbaea3e1aca0a2"><span class="__cf_email__" data-cfemail="d3fafdf5fcd3f2ffffe0fefafff6e0f7f6fde7f2ffbdf0fcfe">[email&#160;protected]</span></a></p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -1288,7 +1295,7 @@
                         <a href="https://instagram.com/all_smiles_dental_" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/59172122662" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/195q1JkLnw/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="mailto:info@allsmilesdental.com"><i class="fas fa-envelope"></i></a>
+                        <a href="/cdn-cgi/l/email-protection#755c5b535a7554595946585c59504651505b4154591b565a58"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -1320,7 +1327,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const nav = document.getElementById('nav');
@@ -1401,5 +1408,5 @@
             this.reset();
         });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9349c0de3f37ada0',t:'MTc0NTM3MzQ4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
