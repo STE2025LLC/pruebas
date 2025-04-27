@@ -725,6 +725,7 @@
         }
         
         .social-links a {
+            position: relative;
             color: var(--white);
             font-size: 1.8rem;
             transition: all 0.3s;
@@ -735,12 +736,36 @@
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.1);
+            text-decoration: none !important;
         }
         
         .social-links a:hover {
             color: var(--accent);
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
+        }
+        
+        .social-links a::after {
+            content: attr(aria-label);
+            position: absolute;
+            background: var(--dark);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            margin-top: 60px;
+            white-space: nowrap;
+        }
+        
+        .social-links a:hover::after {
+            opacity: 1;
+        }
+        
+        .social-link-url {
+            display: none !important;
         }
         
         /* Título de contacto personalizado */
@@ -774,6 +799,20 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+        
+        /* Estilos para ocultar los enlaces del mapa */
+        .map-container iframe {
+            color-scheme: none;
+        }
+        
+        .map-container iframe .gm-style a[href^="http://maps.google.com"],
+        .map-container iframe .gm-style a[href^="https://maps.google.com"],
+        .map-container iframe .gm-style a[href^="https://www.google.com/maps"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
         
         /* Footer */
@@ -859,8 +898,12 @@
             margin-top: 10px;
             max-width: 3000px;
             line-height: 1.4;
-            
-            }
+        }
+        
+        /* Estilos para protección de datos */
+        .hidden-data {
+            display: none;
+        }
         
         /* Animations */
         @keyframes fadeIn {
@@ -960,7 +1003,6 @@
                 padding: 0 10px;
             }
             
-            /* Cambio importante: Eliminar el efecto de zoom en móvil */
             .service-img img {
                 transform: none !important;
             }
@@ -1278,7 +1320,7 @@
         </div>
     </section>
 
-    <!-- Contact Section - Versión Simplificada y Reordenada -->
+    <!-- Contact Section - Versión Modificada -->
     <section class="section contact" id="contact">
         <div class="container">
             <div style="text-align: center; margin-bottom: 60px;">
@@ -1308,8 +1350,9 @@
                     </div>
                     <h3>Reserva por WhatsApp</h3>
                     <p>Consulta inmediata y reserva de citas</p>
-                    <a href="https://wa.me/59172122662" class="contact-btn whatsapp-btn" target="_blank">
+                    <a href="javascript:void(0)" onclick="window.open('https://wa.me/59172122662')" class="contact-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i> Enviar mensaje
+                        <span class="hidden-data">59172122662</span>
                     </a>
                 </div>
                 
@@ -1320,8 +1363,9 @@
                     </div>
                     <h3>Llámanos</h3>
                     <p>Horario de atención telefónica</p>
-                    <a href="tel:+59172122662" class="contact-btn phone-btn">
-                        <i class="fas fa-phone-alt"></i> +591 72122662
+                    <a href="javascript:void(0)" onclick="window.location.href='tel:+59172122662'" class="contact-btn phone-btn">
+                        <i class="fas fa-phone-alt"></i> Llámanos
+                        <span class="hidden-data">+591 72122662</span>
                     </a>
                 </div>
                 
@@ -1332,19 +1376,29 @@
                     </div>
                     <h3>Visítanos</h3>
                     <p>Av. Beni entre 3er y 4º anillo, <br>Calle Rochela # 3000</p>
-                    <a href="https://www.google.com/maps/dir//All+Smiles+Dental-+Dra.+Nohelia+Reyes+Av.+Beni+3000+Santa+Cruz+de+la+Sierra+Bolivia/@-17.753773,-63.1706498,20z/data=!4m8!4m7!1m0!1m5!1m1!1s0x93f1e700443c2ec7:0x60f1f5c68804269e!2m2!1d-63.1706499!2d-17.7537733?entry=ttu&g_ep=EgoyMDI1MDQyMy4wIKXMDSoASAFQAw%3D%3D" class="contact-btn location-btn" target="_blank">
+                    <a href="javascript:void(0)" onclick="window.open('https://www.google.com/maps/dir//All+Smiles+Dental-+Dra.+Nohelia+Reyes+Av.+Beni+3000+Santa+Cruz+de+la+Sierra+Bolivia/@-17.753773,-63.1706498,20z/data=!4m8!4m7!1m0!1m5!1m1!1s0x93f1e700443c2ec7:0x60f1f5c68804269e!2m2!1d-63.1706499!2d-17.7537733?entry=ttu&g_ep=EgoyMDI1MDQyMy4wIKXMDSoASAFQAw%3D%3D')" class="contact-btn location-btn">
                         <i class="fas fa-directions"></i> Cómo llegar
+                        <span class="hidden-data">https://maps.google.com/...</span>
                     </a>
                 </div>
             </div>
             
-            <!-- Redes sociales al final -->
+            <!-- Redes sociales al final - Versión Protegida -->
             <div class="social-networks">
                 <h4>Síguenos en redes</h4>
                 <div class="social-links">
-                    <a href="https://instagram.com/all_smiles_dental_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/people/All-Smiles-Dental-Dra-Nohelia-Reyes/61558469976733" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="mailto:tucorreo@tudominio.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="javascript:void(0)" onclick="window.open('https://instagram.com/all_smiles_dental_')" aria-label="Instagram" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                        <span class="social-link-url">https://instagram.com/all_smiles_dental_</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="window.open('https://www.facebook.com/people/All-Smiles-Dental-Dra-Nohelia-Reyes/61558469976733')" aria-label="Facebook" class="social-link">
+                        <i class="fab fa-facebook"></i>
+                        <span class="social-link-url">https://www.facebook.com/people/All-Smiles-Dental-Dra-Nohelia-Reyes/61558469976733</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="window.location.href='mailto:tucorreo@tudominio.com'" aria-label="Enviar email" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span class="social-link-url">mailto:tucorreo@tudominio.com</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1443,6 +1497,54 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+        
+        // Protección contra inspección
+        document.addEventListener('DOMContentLoaded', function() {
+            // Bloquear menú contextual
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+            
+            // Bloquear teclas de desarrollador
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+                    (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                }
+            });
+            
+            // Proteger datos sensibles
+            const hiddenElements = document.querySelectorAll('.hidden-data, .social-link-url');
+            hiddenElements.forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Eliminar tooltips nativos de redes sociales
+            const socialLinks = document.querySelectorAll('.social-link');
+            socialLinks.forEach(link => {
+                link.removeAttribute('title');
+                link.removeAttribute('data-original-title');
+                
+                // Prevenir que el enlace sea arrastrable
+                link.setAttribute('draggable', 'false');
+                
+                // Ocultar URL en el estado hover
+                link.addEventListener('mouseover', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            
+            // Prevenir que el botón derecho funcione en los iconos
+            document.querySelectorAll('.social-links a').forEach(icon => {
+                icon.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
             });
         });
     </script>
